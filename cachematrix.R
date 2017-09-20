@@ -42,11 +42,11 @@ cacheSolve <- function(x, ...) {
   m <- x$get_I()
   
   # Check if the inverse exists
-  if (is.null(i_value)) {
+  if (is.null(m)) {
     message("calculating the inverse")
     
     data <- x$get()
-    m <- solve(data)
+    m <- solve(data) %*% data
     x$set_I(m)
   } else {
     message("the inverse already exists")
